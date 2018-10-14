@@ -21,7 +21,11 @@ hielixer = Item("MegaElixer", "elixer", "Fully restores HP/MP of one party membe
 
 grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
 
-player = Person(460, 65, 60, 34, [fire, thunder, blizzard, meteor, quake, cure, cura],[])
+player_spells = [fire, thunder, blizzard, meteor, quake, cure, cura]
+player_items = [potion, hipotion, superpotion, elixer, hielixer, grenade]
+
+
+player = Person(460, 65, 60, 34, player_spells, player_items)
 enemy = Person(1200, 65, 45, 25, [], [])
 
 running = True
@@ -64,6 +68,10 @@ while running:
 
         enemy.take_damage(magic_dmg)
         print(bcolors.OKBLUE + "\n" + spell.name + " deals", str(magic_dmg) + "points of damage" + bcolors.ENDC)
+
+    elif index == 2:
+        player.choose_item()
+        item_choice = int(input("Choose item: ")) - 1
 
     enemy_choice = 1
     enemy_dmg = enemy.generate_damage()
