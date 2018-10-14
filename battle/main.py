@@ -1,5 +1,6 @@
 from game import Person, bcolors
 from magic import Spell
+from inventory import Item
 
 #black magic
 fire = Spell("Fire", 10, 100, "black")
@@ -12,8 +13,16 @@ quake = Spell("Quake", 14, 140, "black")
 cure = Spell("Cure", 12, 120, "white")
 cura = Spell("Cura", 18, 200, "white")
 
-player = Person(460, 65, 60, 34, [fire, thunder, blizzard, meteor, quake, cure, cura])
-enemy = Person(1200, 65, 45, 25, [])
+potion = Item("Potion", "potion", "Heals 50 HP", 50)
+hipotion = Item("Hi-Potion", "potion", "Heals 100 HP", 100)
+superpotion = Item("Super Potion", "potion", "Heals 500HP", 500)
+elixer = Item("Elixer", "elixer", "Fully restores HP/MP of one party member", 9999)
+hielixer = Item("MegaElixer", "elixer", "Fully restores HP/MP of one party member", 9999)
+
+grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
+
+player = Person(460, 65, 60, 34, [fire, thunder, blizzard, meteor, quake, cure, cura],[])
+enemy = Person(1200, 65, 45, 25, [], [])
 
 running = True
 i=0
