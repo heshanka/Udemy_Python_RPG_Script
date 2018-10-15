@@ -2,30 +2,18 @@ from game import Person, bcolors
 from magic import Spell
 from inventory import Item
 
-# print("\n\n")
-# print("NAME               HP                                   MP")
-# print("                   _________________________            __________")
-# print(bcolors.BOLD + "Valos:   "
-#         "460/460  |" + bcolors.OKGREEN +"███████             "+ bcolors.ENDC + "|   "+
-#         "65/65   |" + bcolors.OKBLUE + "███" + bcolors.ENDC + "     |")
-#
-# print("                   _________________________            __________")
-# print("Valos:   460/460  |                         |  65/65   |          |")
-#
-# print("                   _________________________            __________")
-# print("Valos:   460/460  |                         |  65/65   |          |")
 
 print("\n\n")
 #black magic █
-fire = Spell("Fire", 10, 100, "black")
-thunder = Spell("Thunder", 10, 100, "black")
-blizzard = Spell("Blizzard", 10, 100, "black")
-meteor = Spell("Meteor", 20, 200, "black")
+fire = Spell("Fire", 25, 600, "black")
+thunder = Spell("Thunder", 25, 600, "black")
+blizzard = Spell("Blizzard", 25, 600, "black")
+meteor = Spell("Meteor", 40, 1200, "black")
 quake = Spell("Quake", 14, 140, "black")
 
 #white magic
-cure = Spell("Cure", 12, 120, "white")
-cura = Spell("Cura", 18, 200, "white")
+cure = Spell("Cure", 25, 620, "white")
+cura = Spell("Cura", 32, 1500, "white")
 
 potion = Item("Potion", "potion", "Heals 50 HP", 50)
 hipotion = Item("Hi-Potion", "potion", "Heals 100 HP", 100)
@@ -39,13 +27,14 @@ player_spells = [fire, thunder, blizzard, meteor, quake, cure, cura]
 player_items = [{"item": potion, "quantity":15}, {"item":hipotion, "quantity":5}, {"item":superpotion, "quantity":5},{"item":elixer, "quantity":5}, {"item":hielixer, "quantity":2}, {"item":grenade, "quantity":5}]
 
 #Instantiate People
-player1 = Person("Valos:", 3260, 65, 60, 34, player_spells, player_items)
-player2 = Person("Nick: ", 4160, 65, 60, 34, player_spells, player_items)
-player3 = Person("Robot:", 3889, 65, 60, 34, player_spells, player_items)
+player1 = Person("Valos:", 3260, 132, 300, 34, player_spells, player_items)
+player2 = Person("Nick: ", 4160, 180, 311, 34, player_spells, player_items)
+player3 = Person("Robot:", 3889, 174, 288, 34, player_spells, player_items)
+enemy = Person("Magus", 1200, 701, 525, 25, [], [])
 
 players = [player1, player2, player3]
 
-enemy = Person("Magus", 1200, 65, 45, 25, [], [])
+
 
 running = True
 i=0
@@ -56,11 +45,13 @@ while running:
     print("=========================")
 
     print("\n\n")
-    print("NAME                HP                                 MP")
+    print("NAME                HP                                           MP")
     for player in players:
         player.get_stats()
 
     print("\n")
+
+    enemy.get_enemy_stats()
 
     for player in players:
         print("\n\n")
@@ -123,8 +114,11 @@ while running:
                 player.heal(item.prop)
                 print(bcolors.OKGREEN + "\n" + item.name + "heals for", str(item.prop), "HP" + bcolors.ENDC)
             elif item.type == "elixer":
-                player.hp = player.maxhp
-                player.mp = player.maxmp
+
+                if item.name == "MegaElixer":
+                    for i in players:
+                        i.hp = i.maxhp
+                        i.mp = i.maxmp
                 print(bcolors.OKGREEN + "\n" + item.name + "fully restores HP/MP", str(item.prop), "HP" + bcolors.ENDC)
             elif item.type == "attack":
                 enemy.take_damage(item.prop)
