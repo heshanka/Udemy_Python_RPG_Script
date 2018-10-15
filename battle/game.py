@@ -158,7 +158,7 @@ class Person:
             current_mp = mp_string
 
 
-        print("                     _______________________________________             __________")
+        print("                     _______________________________________             ________________")
         print(bcolors.BOLD + self.name+"   "+
             current_hp +"  |" + bcolors.OKGREEN + hp_bar  + bcolors.ENDC+ "|   " +
             current_mp +" |" + bcolors.OKBLUE + mp_bar + bcolors.ENDC + "|")

@@ -1,3 +1,5 @@
+import random
+
 from game import Person, bcolors
 from magic import Spell
 from inventory import Item
@@ -45,7 +47,7 @@ while running:
     print("=========================")
 
     print("\n\n")
-    print("NAME                HP                                           MP")
+    print("NAME                HP                                                   MP")
     for player in players:
         player.get_stats()
 
@@ -125,15 +127,11 @@ while running:
                 print(bcolors.FAIL + "\n" + item.name + " deals" + str(item.prop), "points of damage", bcolors.ENDC)
 
     enemy_choice = 1
+    target = random.randrange(0,3)
     enemy_dmg = enemy.generate_damage()
-    player1.take_damage(enemy_dmg)
+
+    players[target].take_damage(enemy_dmg)
     print("Enemy attacks for", enemy_dmg)
-
-    print("--------------------------------")
-    print("Enemy HP:", bcolors.FAIL + str(enemy.get_hp()) + "/" + str(enemy.get_maxhp()) + bcolors.ENDC + "\n")
-
-    # print("Your HP:", bcolors.OKGREEN + str(player.get_hp()) + "/" + str(player.get_maxhp()) + bcolors.ENDC + "\n")
-    # print("Your MP:", bcolors.OKBLUE + str(player.get_mp()) + "/" + str(player.get_maxhp()) + bcolors.ENDC + "\n")
 
     if enemy.get_hp() == 0:
         print(bcolors.OKGREEN + "You win!" + bcolors.ENDC)
