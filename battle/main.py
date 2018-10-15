@@ -38,8 +38,13 @@ grenade = Item("Grenade", "attack", "Deals 500 damage", 500)
 player_spells = [fire, thunder, blizzard, meteor, quake, cure, cura]
 player_items = [{"item": potion, "quantity":15}, {"item":hipotion, "quantity":5}, {"item":superpotion, "quantity":5},{"item":elixer, "quantity":5}, {"item":hielixer, "quantity":2}, {"item":grenade, "quantity":5}]
 
+#Instantiate People
+player1 = Person("Valos", 460, 65, 60, 34, player_spells, player_items)
+player2 = Person("Nick ", 460, 65, 60, 34, player_spells, player_items)
+player3 = Person("Robot", 460, 65, 60, 34, player_spells, player_items)
 
-player = Person(460, 65, 60, 34, player_spells, player_items)
+players = [player1, player2, player3]
+
 enemy = Person(1200, 65, 45, 25, [], [])
 
 running = True
