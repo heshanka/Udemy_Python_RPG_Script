@@ -38,6 +38,7 @@ while running:
     player.choose_action()
     choice = input("Choose action:")
     index = int(choice) - 1
+    print("index:", index)
 
     if index == 0:
         dmg = player.generate_damage()
@@ -77,9 +78,22 @@ while running:
         player.choose_item()
         item_choice = int(input("Choose item: ")) - 1
 
-        if item_choice == 2:
+        if item_choice == -1:
             continue
 
+        item = player.items[item_choice]
+
+        if item.type == "potion":
+            player.heal(item.prop)
+            print(bcolors.OKGREEN + "\n" + item.name + "heals for", str(item.prop), "HP" + bcolors.ENDC)
+        elif item.type == "elixer":
+            player.hp = player.maxhp
+            player.mp = player.maxmp
+            print(bcolors.OKGREEN + "\n" + item.name + "fully restores HP/MP", str(item.prop), "HP" + bcolors.ENDC)
+        elif item.type == "attack":
+            enemy.take_damage(item.prop)
+            print(bcolors.FAIL + "\n" + item.name + " deals" + str(item.prop), "points of damage", bcolors.ENDC)
+            
     enemy_choice = 1
     enemy_dmg = enemy.generate_damage()
     player.take_damage(enemy_dmg)

@@ -54,12 +54,13 @@ class Person:
     def reduce_mp(self, cost):
             self.mp -= cost
 
+
     def choose_action(self):
         i = 1
         print(bcolors.OKBLUE + bcolors.BOLD + "ACTIONS:" + bcolors.ENDC)
         for item in self.action:
             print("    " + str(i) + ":", item)
-            i += i
+            i += 1
 
     def choose_magic(self):
         i = 1
