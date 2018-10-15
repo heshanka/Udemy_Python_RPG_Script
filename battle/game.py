@@ -1,5 +1,6 @@
 import random
 
+
 class bcolors:
     HEADER = '\033[95m'
     OKBLUE = '\033[94m'
@@ -21,7 +22,7 @@ class Person:
         self.atkl = atk - 10
         self.atkh = atk + 10
         self.df = df
-        self. magic = magic
+        self.magic = magic
         self.items = items
         self.action = ["Attack", "Magic", "Items"]
 
@@ -31,7 +32,7 @@ class Person:
     def take_damage(self, dmg):
         self.hp -= dmg
         if self.hp < 0:
-            self.hp =0
+            self.hp = 0
         return self.hp
 
     def heal(self, dmg):
@@ -53,8 +54,7 @@ class Person:
         return self.maxmp
 
     def reduce_mp(self, cost):
-            self.mp -= cost
-
+        self.mp -= cost
 
     def choose_action(self):
         i = 1
@@ -66,21 +66,22 @@ class Person:
 
     def choose_magic(self):
         i = 1
-        print("\n"+ bcolors.OKBLUE + bcolors.BOLD + "MAGIC" + bcolors.ENDC)
+        print("\n" + bcolors.OKBLUE + bcolors.BOLD + "MAGIC" + bcolors.ENDC)
         for spell in self.magic:
-            print("        " + str(i) + ":", spell.name, "(cost:", str(spell.cost)+ ")")
+            print("        " + str(i) + ":", spell.name, "(cost:", str(spell.cost) + ")")
             i += 1
 
     def choose_item(self):
         i = 1
         print("\n" + bcolors.OKGREEN + bcolors.BOLD + "ITEMS:" + bcolors.ENDC)
         for item in self.items:
-            print("        " + str(i) + ",", item["item"].name, ":",item["item"].description, " (x" + str(item["quantity"]) + ")")
+            print("        " + str(i) + ",", item["item"].name, ":", item["item"].description,
+                  " (x" + str(item["quantity"]) + ")")
             i += 1
 
     def get_enemy_stats(self):
         hp_bar = ""
-        bar_ticks = (self.hp / self.maxhp) * 100/2
+        bar_ticks = (self.hp / self.maxhp) * 100 / 2
 
         while bar_ticks > 0:
             hp_bar += "█"
@@ -101,13 +102,10 @@ class Person:
             current_hp += hp_string
         else:
             current_hp = hp_string
-        print("                     _______________________________________________________________________________             __________")
+        print(
+            "                     _______________________________________________________________________________             ")
         print(bcolors.BOLD + self.name + "   " +
               current_hp + "  |" + bcolors.FAIL + hp_bar + bcolors.ENDC + "|")
-
-
-
-
 
     def get_stats(self):
         hp_bar = ""
@@ -120,7 +118,7 @@ class Person:
             hp_bar += "█"
             bar_ticks -= 1
 
-        while len(hp_bar)<25:
+        while len(hp_bar) < 25:
             hp_bar += " "
 
         while mp_ticks > 0:
@@ -157,8 +155,7 @@ class Person:
         else:
             current_mp = mp_string
 
-
         print("                     _______________________________________             ________________")
-        print(bcolors.BOLD + self.name+"   "+
-            current_hp +"  |" + bcolors.OKGREEN + hp_bar  + bcolors.ENDC+ "|   " +
-            current_mp +" |" + bcolors.OKBLUE + mp_bar + bcolors.ENDC + "|")
+        print(bcolors.BOLD + self.name + "   " +
+              current_hp + "  |" + bcolors.OKGREEN + hp_bar + bcolors.ENDC + "|   " +
+              current_mp + " |" + bcolors.OKBLUE + mp_bar + bcolors.ENDC + "|")
