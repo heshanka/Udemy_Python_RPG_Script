@@ -103,7 +103,7 @@ class Person:
         else:
             current_hp = hp_string
         print(
-            "                     _______________________________________________________________________________")
+            "                      __________________________________________________")
         print(bcolors.BOLD + self.name + "   " +
               current_hp + "  |" + bcolors.FAIL + hp_bar + bcolors.ENDC + "|")
 
@@ -155,7 +155,7 @@ class Person:
         else:
             current_mp = mp_string
 
-        print("                     _______________________________________             ________________")
+        print("                     _________________________             __________")
         print(bcolors.BOLD + self.name + "   " +
               current_hp + "  |" + bcolors.OKGREEN + hp_bar + bcolors.ENDC + "|   " +
               current_mp + " |" + bcolors.OKBLUE + mp_bar + bcolors.ENDC + "|")
