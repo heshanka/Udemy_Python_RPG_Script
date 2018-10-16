@@ -47,7 +47,7 @@ while running:
     print("=========================")
 
     print("\n")
-    print("NAME                HP                                                   MP")
+    print("NAME                HP                                    MP")
     for player in players:
         player.get_stats()
 
