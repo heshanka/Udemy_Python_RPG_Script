@@ -6,7 +6,7 @@ from inventory import Item
 
 
 print("\n\n")
-#black magic █
+#black magic 
 fire = Spell("Fire", 25, 600, "black")
 thunder = Spell("Thunder", 25, 600, "black")
 blizzard = Spell("Blizzard", 25, 600, "black")
